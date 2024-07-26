@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+}
+.header{
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  box-shadow: 1px 1px 7px rgba(0,0,0,.1);
+  background-color: whitesmoke;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  color: black;
+
+}
+.body-content{
+  padding-top: 80px;
+  width: 100%;
+}
+.logo-section{
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  gap: 2px;
+  align-items:center;
+}
+.logo-section img{
+  width: 32px;
+}
+.navigation{
+  display: flex;
+  gap: 10px;
+  font-weight: 500;
+  flex-grow: 2;
+  justify-content: flex-end;
+
+}
+.navigation li{
+  padding: 10px;
+}
+.navigation li:hover{
+  border-radius: 8px;
+  background-color:rgba(145, 149, 149, 0.702);
+}
+.menu{
+  display: flex;
+  flex-grow: 2;
+  justify-content: flex-end;
+
+}
+.nav2{
+  display: flex;
+  padding: 0px 10px;
+  gap: 18px;
+}
+.profile-cont{
+  position: relative;
+  display: flex;
+  align-items: center;
+  
+}
+.triangle {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 12px solid white; /* Change color as needed */
+}
+
+.profile {
+  width: 40px; 
+  height: 40px; 
+  border-radius: 50%;
+  cursor: pointer;
+  /* box-shadow: 0 0 0px rgba(11, 11, 11, 0.791);  */
+  overflow: hidden; 
+  vertical-align: middle;
+}
+.username{
+  font-size: 16px;
+  color: silver;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.email{
+  font-size: 12px;
+}
+/* Image */
+.profile-img {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
+
+.signin{
+  background-color: rgb(18, 121, 224);
+  padding: 6px 14px;
+  border-radius: 18px ;
+  min-width: 80px ;
+  font-weight: 600;
+  color: white;
+}
+.logout{
+  background-color: rgb(224, 18, 104);
+  padding: 6px 14px;
+  font-weight: 600;
+  color: white;
+  border-radius: 18px ;
+}
+.signin:hover {
+  background-color: rgba(18, 121, 224, 0.887);
+}
+.logout:hover{
+  background-color: rgba(224, 18, 104, 0.904);
+}
+
+.profile-dropdown{
+  position: absolute;
+  top: 50px;
+  right: -8px;
+  padding: 10px;
+  color: rgb(9, 9, 9);
+  z-index: 100;
+  box-shadow: 1px 1px 7px rgba(0,0,0,.1);
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: .25rem;
+}
+.profile-dropdown-active{
+  display: none;
+}
+.user-prof{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+  gap: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+.user-gist{
+  padding: 10px;
+
+}
+.prof-opt{
+  padding: 10px;
+  cursor: pointer;
+  color: gray;
+}
+.prof-opt:hover{
+  background-color:#e9ecef;
+}
+.prof-logout{
+  padding: 18px 10px 8px 10px;
+  cursor: pointer;
+}
+

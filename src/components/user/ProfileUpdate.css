@@ -1,0 +1,318 @@
+/* Default styles for all screen sizes */
+.prof-update {
+  display: flex;
+  width: 100%;
+  padding: 30px;
+  flex-direction: column;
+}
+
+/* Styles for phone information */
+.prof-phone-info {
+  flex-grow: 3;
+  text-align: end;
+  padding: 0 20px;
+}
+
+.info-phone {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.fa-check {
+  color: green;
+  font-size: 12px;
+}
+
+.form-head {
+  display: flex;
+  gap: 8px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.prof-info-cont {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+.prof-mod-cont {
+  display: flex;
+  flex-grow: 1;
+  padding: 10px;
+}
+
+.abc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.prof-left {
+  display: flex;
+  flex-grow: 2;
+  padding: 20px;
+  gap: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, 0.048);
+}
+
+.prof-right {
+  padding: 20px;
+}
+
+.prof-right .otp-cont {
+  padding-top: 0;
+}
+
+.update-fields-cont {
+  flex-grow: 2;
+  padding: 10px;
+}
+
+.image-update-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.file-upload {
+  position: relative;
+  display: inline-block;
+}
+
+.custom-file-upload {
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  padding: 10px; /* Button padding */
+  border-radius: 18px; /* Button border radius */
+  cursor: pointer;
+}
+
+.custom-file-upload:hover {
+  background-color: #0056b3; /* Button background color on hover */
+}
+
+input[type='file'] {
+  display: none;
+}
+
+.prof-img-sec {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.prof-img-sec img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0;
+  cursor: pointer;
+  box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, 0.527);
+}
+
+.prof-butt {
+  padding: 10px;
+  background-color: rgb(231, 40, 113);
+  color: white;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: .5s background-color;
+}
+
+.prof-butt:hover {
+  background-color: rgba(202, 18, 88, 0.983);
+}
+
+.Delete-btn {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  gap: 5px;
+  margin-left: 20px;
+  cursor: pointer;
+  border-radius: 18px;
+  background-color: rgb(255, 0, 85);
+  padding: 10px 20px;
+}
+
+.profile-view img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 0;
+}
+
+.profile-view {
+  flex-wrap: 2;
+  display: flex;
+  padding: 20px 0 20px 30px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.26);
+}
+
+.update-btn {
+  padding: 10px 15px;
+  background-color: rgb(26, 24, 24);
+  color: white;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: .5s background-color;
+}
+
+.update-btn:hover {
+  background-color: rgba(0, 0, 0, 0.767);
+}
+
+.updatefill {
+  outline: none;
+  border-radius: 18px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.upload-label {
+  display: block;
+  margin: 0 0 10px 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.phone-update {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.updatePhonefill {
+  outline: none;
+  flex-grow: 2;
+  border-radius: 18px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.upload-remove {
+  display: flex;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.update-ph-div {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+/* ProfileUpdate.css */
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: #141313;
+  padding: 20px;
+  color: white;
+  border-radius: 8px;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button-group button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.del-msg {
+  max-width: 400px;
+  margin-bottom: 20px;
+  text-align: justify;
+  color: gray;
+}
+
+.button-group button:first-child {
+  background-color: rgb(15, 128, 240);
+}
+
+.button-group button:first-child:hover {
+  background-color: rgb(10, 108, 206);
+}
+
+.button-group button:last-child {
+  background-color: #ff0000;
+}
+
+.button-group button:last-child:hover {
+  background-color: #ca1010;
+}
+
+/* Media queries for mobile responsiveness */
+
+@media only screen and (max-width: 768px) {
+  .prof-update {
+      padding: 20px;
+  }
+  
+  .prof-left, .prof-right {
+      padding: 10px;
+  }
+  
+  .prof-left {
+      flex-direction: column;
+      gap: 20px;
+  }
+  
+  .prof-img-sec {
+      width: 100px;
+      height: 100px;
+  }
+  
+  .prof-img-sec img {
+      width: 100px;
+      height: 100px;
+  }
+  
+  .prof-butt, .Delete-btn, .update-btn {
+      padding: 8px 12px;
+      font-size: 16px;
+  }
+}

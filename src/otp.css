@@ -1,0 +1,82 @@
+.otp-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+  }
+  .otp-card{
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
+  }
+  .otp-welcome {
+    margin-bottom: 20px;
+  }
+.otp-user{
+    font-style: italic;
+    font-size: 20px;
+    font-weight: 600;
+}
+  .otp-form {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .resend{
+    color:green;
+    
+  }
+  .otp-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .otpfill{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+  }
+  
+  .submitButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .submitButton:hover {
+    background-color: #0056b3;
+  }
+  .forgetIcon{
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .fa-exclamation{
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+  }
+  .invalid-otp{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #FF0000;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+  }
+  .otp-card .pass-link{
+    padding-top: 10px;
+    float: right;
+  }

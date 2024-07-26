@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Rubik+Scribble&family=Workbench&display=swap');
+.form-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+.wrapper{
+  width: 50%;
+  max-width: 400px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
+}
+.popup-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.or {
+  margin: 0 10px;
+  font-size: 16px;
+  color: #666;
+}
+.form-group{
+  padding: 10px;
+}
+
+.form-group{
+  width: 100%;
+  position: relative;
+}
+
+.container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.login-title{
+  font-size: 24px;
+  font-weight: 600;
+  color: #3d3d3d;
+  text-align: center;
+  font-family: "Workbench", sans-serif;
+  line-height: 40px;
+  padding-left: 10px;
+}
+
+label {
+  color: #3d3d3d;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.submitButton {
+  background-color: rgb(43, 136, 217);
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 20px 0px;
+  border-radius: 4px;
+  width: 100%;
+}
+.email-form{
+  padding: 10px;
+  border: 1px solid gray;
+  outline: none;
+  width: 100%;
+
+}
+.invalid{
+  padding: 10px;
+  border: 1px solid #FF0000;
+  outline: none;
+  width: 100%;
+}
+.pass-link{
+  font-size: 14px;
+  padding-left:10px ;
+  cursor: pointer;
+}
+.pass-link:hover{
+  text-decoration: underline;
+  color:rgb(43, 136, 217) ;
+}
+.google-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.singup-msg{
+  padding-top: 8px;
+  text-align: center;
+}
+.singup-msg a:hover{
+  color:rgb(43, 136, 217);
+  text-decoration: underline;
+}
+
+.passHide{
+ position: absolute;
+ top: 20px;
+ right: 20px;
+ color: rgb(43, 136, 217);
+ width: 22px;
+ height: 22px;
+}
+.error{
+  color: #FF0000;
+}
