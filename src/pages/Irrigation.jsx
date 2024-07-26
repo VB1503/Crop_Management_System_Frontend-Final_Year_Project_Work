@@ -16,7 +16,6 @@ const Timer = ({ onTimerComplete }) => {
             if (minutes === 59) {
                 setMinutes(0);
                 setHours(hours => hours + 1);
-
             }
             if (hours === 0 && minutes === 0 && seconds === 10) {
                 clearInterval(interval);
@@ -44,11 +43,11 @@ const IrrigationSystem = () => {
         const fetchWeatherData = async (latitude, longitude) => {
             try {
                 // Fetch current weather data
-                const currentWeatherResponse = await axios.get(`http://api.weatherapi.com/v1/current.json?key=31a8d1a6588a42a78ff115005242702&q=${latitude},${longitude}`);
+                const currentWeatherResponse = await axios.get(`https://api.weatherapi.com/v1/current.json?key=31a8d1a6588a42a78ff115005242702&q=${latitude},${longitude}`);
                 setWeatherData(currentWeatherResponse.data);
 
                 // Fetch forecast weather data
-                const forecastResponse = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=31a8d1a6588a42a78ff115005242702&q=${latitude},${longitude}&days=3`);
+                const forecastResponse = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=31a8d1a6588a42a78ff115005242702&q=${latitude},${longitude}&days=3`);
                 setForecastData(forecastResponse.data);
 
                 setError(null);
