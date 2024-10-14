@@ -49,7 +49,7 @@ const CropRecommendationForm = () => {
   };
 
   return (
-    <div className="container mt-10">
+    <div className="container mt-10 ">
       <h2 className="text-center text-[20px] font-bold mb-10 text-green-700">Crop Recommendation System</h2>
       <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
         {/* Selectable option to choose land */}

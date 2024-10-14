@@ -88,17 +88,17 @@ const IrrigationSystem = () => {
     };
 
     return (
-        <div className='flex flex-col  pt-10'>
-            <div className='flex items-center justify-center gap-[40px]'>
-                <div className=" p-8 border border-gray-300 rounded-lg shadow-lg">
+        <div className='flex flex-col gap-10 pt-10'>
+            <div className='flex items-center justify-center gap-[40px] irr-flex'>
+                <div className=" p-1 md:p-8 border border-gray-300 rounded-lg shadow-lg">
                     {forecastData ? (
                         <div className="mt-8">
                             <h3 className="text-center text-xl font-semibold mb-8 text-blue-800">Forecast Weather</h3>
-                            <div className='flex gap-[25px]'>
+                            <div className='flex gap-2 md:gap-[25px]'>
                                 {forecastData.forecast.forecastday.map((day, index) => (
-                                    <div key={index} className="text-center mb-4">
+                                    <div key={index} className="text-center mb-4 text-[14px] md:text-[18px]">
                                         <img src={day.day.condition.icon} alt="Weather Icon" className="mx-auto mt-2" />
-                                        <h4 className="text-lg font-semibold text-green-600">{day.date}</h4>
+                                        <h4 className="text-sm font-semibold text-green-600">{day.date}</h4>
                                         <p><strong>Condition:</strong> {day.day.condition.text}</p>
                                         <p><strong>Max Temperature:</strong> {day.day.maxtemp_c} °C</p>
                                         <p><strong>Min Temperature:</strong> {day.day.mintemp_c} °C</p>
@@ -144,10 +144,10 @@ const IrrigationSystem = () => {
                     )}
                 </div>
             </div>
-            <div className="bg-transperent mr-auto ml-60 p-8 border border-gray-300 rounded-lg shadow-lg">
+            <div className="bg-transperent mx-auto  p-8 border border-gray-300 rounded-lg shadow-lg">
                 <h3 className="text-xl font-semibold mb-2">Irrigation Guidelines</h3>
                 
-                <ul className="list-disc ml-6">
+                <ul className=" ">
                     <li>Ensure proper soil moisture levels.</li>
                     <li>Monitor weather forecasts regularly.</li>
                     <li>Adjust irrigation schedules based on weather conditions.</li>

@@ -36,7 +36,7 @@ const FertilizerRecommendationForm = () => {
         <div className='flex gap-[10px]'>
 
         <div className="max-w-md mx-auto p-8 border border-gray-300 rounded-lg shadow-lg">
-            <h2 className="text-2xl mb-6 text-center font-bold text-black">
+            <h2 className="text-2xl mb-6 text-center font-bold text-black mt-4">
                 Get informed advice on fertilizer based on soil
             </h2>
             <form onSubmit={handleSubmit} className="space-y-4">

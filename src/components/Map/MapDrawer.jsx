@@ -136,20 +136,26 @@ const MapComponent = () => {
 
   return (
     <div className="flex items-center justify-center flex-col mb-[20px]">
-      <div className="p-10 text-black">
-        <div className="relative">
-        <input
-          type="text"
-          className="border p-[10px] rounded-lg shadow-xl w-[400px]"
-          placeholder="Search place..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <button onClick={searchPlace} className="absolute text-[24px] text-blue-400 right-2 bg-yellow-500 rounded-full p-1 top-2"><IoSearch/></button>
-        </div>
-      </div>
-      <div className="flex gap-10">
-      <div className="w-[100vh] h-[70vh] relative shadow-lg">
+      <div className="mt-14 mb-4 text-black mx-auto w-full flex justify-center">
+  <div className="relative w-full max-w-[400px]">
+    <input
+      type="text"
+      className="border p-3 rounded-lg shadow-xl w-full"
+      placeholder="Search place..."
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+    />
+    <button
+      onClick={searchPlace}
+      className="absolute text-[24px] text-blue-400 right-3 bg-yellow-500 rounded-full p-1 top-2"
+    >
+      <IoSearch />
+    </button>
+  </div>
+</div>
+
+      <div className="flex gap-10 map-cont">
+      <div className="w-[60vh] h-[40vh] md:w-[100vh] md:h-[70vh] relative shadow-lg ">
         <MapContainer className="shadow-xl" center={[latitude, longitude]} zoom={zoomLevel} ref={mapRef} style={{ height: "100%", width: "100%" }}>
           <TileLayer
             attribution='&copy; Google Maps'

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import { MdOutlineKeyboardDoubleArrowUp,MdOutlineKeyboardDoubleArrowDown  } from "react-icons/md";
 const Header = () => {
   const [current, setCurrent] = useState('h');
   const [isOpen, setOpen] = useState(true);
@@ -25,7 +25,11 @@ const Header = () => {
       console.error('Error sending subscription to server:', error);
     }
   };
-  
+  const [isExpanded, setIsExpanded] = useState(false); // State to manage toggle
+
+  const toggleSlide = () => {
+    setIsExpanded(!isExpanded);
+  };
   const handleSubmit = async(e)=>{
     e.preventDefault()
     closeMenu();
@@ -74,6 +78,7 @@ const Header = () => {
 
   return (
     <>
+    <div className='head-cont'>
       <div className='header'>
         <div className='logo-section'>
           <img src='https://cdn-icons-png.flaticon.com/128/15730/15730298.png'></img>
@@ -81,13 +86,13 @@ const Header = () => {
         </div>
         <nav className='menu'>
         {username &&
-          <ul className='navigation'>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='LSM/'>Register Your Land</Link></li>
-            <li><Link to='crs/'>Crop Recommendation System</Link></li>
-            <li><Link to='cys/'>Crop Yield Prediction</Link></li>
-            <li><Link to='fertilizer/'>Fertilizers</Link></li>
-            <li><Link to='irrigation/'>Irrigation</Link></li>
+          <ul className={`navigation  ${isExpanded ? 'flex' : 'none'}`}>
+            <li onClick={toggleSlide}><Link to='/'>Home</Link></li>
+            <li onClick={toggleSlide}><Link to='LSM/'>Register Your Land</Link></li>
+            <li onClick={toggleSlide}><Link to='crs/'>Crop Recommendation System</Link></li>
+            <li onClick={toggleSlide}><Link to='cys/'>Crop Yield Prediction</Link></li>
+            <li onClick={toggleSlide}><Link to='fertilizer/'>Fertilizers</Link></li>
+            <li onClick={toggleSlide}><Link to='irrigation/'>Irrigation</Link></li>
           </ul>
 }
           <div className='nav2'>
@@ -124,6 +129,12 @@ const Header = () => {
           </div>
         </nav>
       </div>
+        <div className={`slide-display w-full h-8 ${isExpanded ? 'absolute w-full left-0 top-[324px]' : ''}`}>
+            <div className='slide-button transition-transform duration-700 ease-in-out' onClick={toggleSlide}>
+            {isExpanded ? <MdOutlineKeyboardDoubleArrowUp className='mx-auto'/> : <MdOutlineKeyboardDoubleArrowDown className='mx-auto'/>}
+            </div>
+        </div>
+        </div>
       <div className='body-content'>
       <Outlet />
       </div>
