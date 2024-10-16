@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const FertilizerRecommendationForm = () => {
     const [fertilizer,setFertilizer]=useState('')
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         temperature: '',
         humidity: '',
@@ -16,6 +17,7 @@ const FertilizerRecommendationForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         try {
             const response = await axios.post('https://agroharvest.onrender.com/fertilizer/', formData);
             console.log(response.data);
@@ -24,7 +26,10 @@ const FertilizerRecommendationForm = () => {
         } catch (error) {
             console.error('Error:', error);
             // Handle error
-        }
+        } finally {
+            setLoading(false); // Hide preloader after response
+          }
+        
     };
 
     const handleChange = (e) => {
@@ -33,9 +38,9 @@ const FertilizerRecommendationForm = () => {
     };
 
     return (
-        <div className='flex gap-[10px]'>
+        <div className='flex flex-col-reverse gap-[10px] md:flex-row'>
 
-        <div className="max-w-md mx-auto p-8 border border-gray-300 rounded-lg shadow-lg">
+        <div className="max-w-md md:max-w-xl mx-auto p-8  rounded-lg shadow-sm">
             <h2 className="text-2xl mb-6 text-center font-bold text-black mt-4">
                 Get informed advice on fertilizer based on soil
             </h2>
@@ -183,6 +188,12 @@ const FertilizerRecommendationForm = () => {
                     </button>
                 </div>
             </form>
+            {/* Preloader overlay */}
+      {loading && (
+        <div className="fixed inset-0 bg-sky-500 bg-opacity-50 flex items-center justify-center z-50">
+          <img src="/preloader.gif" alt="Loading..." className="w-[300px]" />
+        </div>
+      )}
         </div>
         {fertilizer &&
         <div className="flex items-center container mx-auto my-16">

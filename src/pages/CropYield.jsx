@@ -4,6 +4,7 @@ import axios from 'axios';
 function CropYieldPredictionForm() {
     const [userLands, setUserLands] = useState([]);
     const [selectedLand, setSelectedLand] = useState("");
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         user: parseInt(localStorage.getItem("userid")),
         landId: '', // Initialize landId as empty string
@@ -45,10 +46,11 @@ function CropYieldPredictionForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        setLoading(true);
         axios.post('https://agroharvest.onrender.com/cropyield/', formData)
             .then(response => {
                 setResponseInfo(response.data);
+                setLoading(false);
                 setError(null);
             })
             .catch(error => {
@@ -69,11 +71,11 @@ function CropYieldPredictionForm() {
     ];
 
     return (
-        <div className="max-w-md mx-auto p-8 mt-10 border border-gray-300 rounded-lg shadow-lg">
-            <h2 className="text-2xl mb-6 text-center">Crop Yield Prediction Form</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="form-group">
-                    <label htmlFor="land" className="label">
+        <div className="max-w-md md:max-w-4xl mx-auto p-8 mt-10  ">
+            <h2 className="text-2xl mb-6 text-green-800 text-center font-bold">Crop Yield Prediction</h2>
+            <form onSubmit={handleSubmit} className="space-y-6">
+                <div >
+                    <label htmlFor="land" className="label text-[18px] font-bold">
                         Choose Land
                     </label>
                     <select
@@ -91,11 +93,11 @@ function CropYieldPredictionForm() {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="year" className="block">Year:</label>
-                    <input type="number" id="year" name="year" value={formData.year} onChange={handleChange} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" required />
+                    <label htmlFor="year" className="block text-[18px] font-bold">Year:</label>
+                    <input type="number" id="year" name="year" value={formData.year} onChange={handleChange} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" placeholder='Enter the Year' required />
                 </div>
                 <div>
-                    <label htmlFor="season" className="block">
+                    <label htmlFor="season" className="block text-[18px] font-bold">
                         Season
                     </label>
                     <select
@@ -103,7 +105,7 @@ function CropYieldPredictionForm() {
                         name="season"
                         value={formData.season}
                         onChange={handleChange}
-                        className="block w-full px-4 py-2 mt-2 text-lg border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                        className="block w-full px-2 py-2 mt-2 text-md border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
                         required
                     >
                         <option value="">Select Season</option>
@@ -116,8 +118,8 @@ function CropYieldPredictionForm() {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="month" className="block">Forecast Duration:</label>
-                    <select id="month" name="month" value={formData.month} onChange={handleChange} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" required>
+                    <label htmlFor="month" className="block text-[18px] font-bold">Forecast Duration:</label>
+                    <select id="month" name="month" value={formData.month} onChange={handleChange} className="w-full px-2 py-2 text-md border rounded-lg focus:outline-none focus:border-blue-500" required>
                         <option value="">Select Forecast Duration</option>
                         {monthsOptions.map(option => (
                             <option key={option.value} value={option.value}>{option.label}</option>
@@ -125,7 +127,7 @@ function CropYieldPredictionForm() {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="crop_type" className="block">
+                    <label htmlFor="crop_type" className="block text-[18px] font-bold">
                         Crop:
                     </label>
                     <select
@@ -133,7 +135,7 @@ function CropYieldPredictionForm() {
                         name="crop"
                         value={formData.crop}
                         onChange={handleChange}
-                        className="block w-full px-4 py-2 mt-2 text-md border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                        className="block w-full px-2 py-2 mt-2 text-md border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
                         required
                     >
                         <option value="">Select Crop</option>
@@ -143,12 +145,17 @@ function CropYieldPredictionForm() {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="area" className="block">Area in hectare:</label>
-                    <input type="number" id="area" name="area" value={formData.area} onChange={handleChange} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" required />
+                    <label htmlFor="area" className="block text-[18px] font-bold">Area in hectare:</label>
+                    <input type="number" id="area" name="area" value={formData.area} onChange={handleChange} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" placeholder='Enter the Area size in Hectare'required />
                 </div>
                 <button type="submit" className="w-full bg-green-500 text-white py-2 rounded-lg">Submit</button>
             </form>
-
+            {/* Preloader overlay */}
+      {loading && (
+        <div className="fixed inset-0 bg-sky-500 bg-opacity-50 flex items-center justify-center z-50">
+          <img src="/preloader.gif" alt="Loading..." className="w-[300px]" />
+        </div>
+      )}
             {responseInfo && (
                 <div className="mt-8">
                     <h3 className="text-xl font-semibold">Yield Prediction and Production Rate</h3>

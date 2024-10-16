@@ -57,11 +57,13 @@
   
   .form-group {
     margin-bottom: 15px;
+    
   }
   
   .label {
     display: block;
     margin-bottom: 5px;
+    
   }
   
   .input {
@@ -109,4 +111,7 @@
 .select-land{
   padding: 10px;
 
+}
+.predicting-bg{
+  background: linear-gradient(135deg, #00c6ff, #0072ff); 
 }

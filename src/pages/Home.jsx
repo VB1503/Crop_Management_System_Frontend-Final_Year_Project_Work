@@ -1,7 +1,18 @@
-import React from 'react';
-import './Home.css'; // You can customize further with your own CSS if needed
-
+import React,{useState} from 'react';
+import './Home.css'; 
+import { useNavigate } from 'react-router-dom';
 const HomePage = () => {
+  const username = useState(localStorage.getItem('first_name'))
+  const navigate = useNavigate();
+  const handleButtonClick = () => {
+    if (username) {
+      // If username is valid (true), navigate to /LSM
+      navigate('/LSM');
+    } else {
+      // If username is false or empty, navigate to /login
+      navigate('/login');
+    }
+  };
   return (
     <div className="home-container bg-gray-100 text-gray-900">
       {/* Welcome Section */}
@@ -84,7 +95,7 @@ const HomePage = () => {
           <p className="text-lg md:text-xl leading-relaxed mb-6">
             Create an account using Google OAuth / user details, select your Land and input the parameters, and get actionable insights on which crops to plant and expected yields.
           </p>
-          <button className="bg-white text-green-600 font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-200 transition duration-300">
+          <button className="bg-white text-green-600 font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-200 transition duration-300" onClick={handleButtonClick}>
             Get Started Now
           </button>
         </div>

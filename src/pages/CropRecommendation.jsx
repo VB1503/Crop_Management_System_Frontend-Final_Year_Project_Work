@@ -9,6 +9,7 @@ const CropRecommendationForm = () => {
   const [response, setResponse] = useState(null);
   const [userLands, setUserLands] = useState([]);
   const [selectedLand, setSelectedLand] = useState("");
+  const [loading, setLoading] = useState(false); // Added state for loading
 
   useEffect(() => {
     const fetchUserLands = async () => {
@@ -26,9 +27,11 @@ const CropRecommendationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Show preloader when the form is submitted
+
     const data = {
       user: parseInt(localStorage.getItem("userid")),
-      landId: parseInt(selectedLand), // Updated with the selected land ID
+      landId: parseInt(selectedLand),
       nitrogen: parseInt(nitrogen),
       phosphorus: parseInt(phosphorus),
       potassium: parseInt(potassium),
@@ -36,23 +39,20 @@ const CropRecommendationForm = () => {
     };
 
     try {
-      const res = await axios.post(
-        "https://agroharvest.onrender.com/croprecommendation/",
-        data
-      );
+      const res = await axios.post("https://agroharvest.onrender.com/croprecommendation/", data);
       setResponse(res.data);
-      // Store selected land ID in local storage
       localStorage.setItem("userlands", selectedLand);
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setLoading(false); // Hide preloader after response
     }
   };
 
   return (
-    <div className="container mt-10 ">
+    <div className="container mt-10">
       <h2 className="text-center text-[20px] font-bold mb-10 text-green-700">Crop Recommendation System</h2>
       <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
-        {/* Selectable option to choose land */}
         <div className="form-group">
           <label htmlFor="land" className="label">
             Choose Land
@@ -65,12 +65,12 @@ const CropRecommendationForm = () => {
             className="input"
           >
             <option value="">Select Land</option>
-            {userLands.map((land,index) => (
+            {userLands.map((land, index) => (
               <option key={index} value={land.landId}>{`Land ${index + 1}`}</option>
             ))}
           </select>
         </div>
-        {/* Rest of the form fields */}
+
         <div className="form-group">
           <label htmlFor="nitrogen" className="label">
             Nitrogen (N)
@@ -84,6 +84,7 @@ const CropRecommendationForm = () => {
             className="input"
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="phosphorus" className="label">
             Phosphorus (P)
@@ -97,6 +98,7 @@ const CropRecommendationForm = () => {
             className="input"
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="potassium" className="label">
             Potassium (K)
@@ -110,6 +112,7 @@ const CropRecommendationForm = () => {
             className="input"
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="ph" className="label">
             pH
@@ -124,10 +127,19 @@ const CropRecommendationForm = () => {
             className="input"
           />
         </div>
+
         <button type="submit" className="button col-span-2">
           Get Crop Recommendation
         </button>
       </form>
+
+      {/* Preloader overlay */}
+      {loading && (
+        <div className="fixed inset-0 bg-sky-500 bg-opacity-50 flex items-center justify-center z-50">
+          <img src="/preloader.gif" alt="Loading..." className="w-[300px]" />
+        </div>
+      )}
+
       {response && (
         <div className="response">
           <h3 className="text-[20px] font-bold text-orange-600">{response.message}</h3>

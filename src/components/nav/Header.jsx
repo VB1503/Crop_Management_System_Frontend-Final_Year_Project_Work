@@ -129,11 +129,13 @@ const Header = () => {
           </div>
         </nav>
       </div>
+      {username &&
         <div className={`slide-display w-full h-8 ${isExpanded ? 'absolute w-full left-0 top-[324px]' : ''}`}>
             <div className='slide-button transition-transform duration-700 ease-in-out' onClick={toggleSlide}>
             {isExpanded ? <MdOutlineKeyboardDoubleArrowUp className='mx-auto'/> : <MdOutlineKeyboardDoubleArrowDown className='mx-auto'/>}
             </div>
         </div>
+}
         </div>
       <div className='body-content'>
       <Outlet />
