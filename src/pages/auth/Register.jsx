@@ -136,7 +136,7 @@ function Register() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center">
         
       <div className="max-w-md w-full px-2">
         <div className="bg-white rounded-md p-6">
