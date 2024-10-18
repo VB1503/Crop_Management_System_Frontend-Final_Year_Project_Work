@@ -12,6 +12,7 @@ const ProfileUpdate = () => {
   const [image, setImage] = useState("");
   const [otp, setOtp] = useState(false);
   const is_verified = localStorage.getItem('is_verified');
+  const [ph_verify, setVerify] = useState(false);
   const [errors, setErrors] = useState({
     email: "",
     phone_number: "",
@@ -264,6 +265,7 @@ const ProfileUpdate = () => {
 
       if (res.status === 200) {
         setOtp(true);
+        setVerify(true)
         localStorage.setItem('phone_number',Phone)
         localStorage.setItem('is_verified', false)
       }
@@ -389,7 +391,7 @@ const ProfileUpdate = () => {
           </div>
         </div>
       )}
-      {is_verified === 'false' && (
+      {ph_verify && is_verified === "false" && (
                   <div className='modal-background'>
                     <div className='overlay-otp'>
                       <VerifyOtp />
