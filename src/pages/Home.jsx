@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 const HomePage = () => {
   const username = useState(localStorage.getItem('first_name'))
   const navigate = useNavigate();
+  console.log(username)
   const handleButtonClick = () => {
-    if (username) {
+    if (username[0]) {
       // If username is valid (true), navigate to /LSM
       navigate('/LSM');
     } else {

@@ -180,6 +180,16 @@
   cursor: pointer;
 }
 
+.side-label {
+  font-size: 12px;
+  color: black;
+  background-color: white;
+  padding: 2px;
+  border: 1px solid black;
+  border-radius: 3px;
+  pointer-events: none; /* Prevent label from interfering with map clicks */
+}
+
 
 @media screen and (max-width: 1090px) {
 
@@ -190,6 +200,7 @@
   position: absolute;
   color: black;
   font-weight: bold;
+  border-bottom: 1px solid #ccc;
   left: 0;
   top: 64px;
   width: 100%;

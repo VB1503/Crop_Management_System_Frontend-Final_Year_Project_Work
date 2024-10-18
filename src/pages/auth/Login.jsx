@@ -88,6 +88,7 @@ const Login = () => {
                 navigate('/');
                 window.location.href = '/';
                 window.location.reload(true);
+                toast.success('Login successful');
                 
               }
               } else {
