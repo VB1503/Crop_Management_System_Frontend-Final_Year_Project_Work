@@ -1,9 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Rubik+Scribble&family=Workbench&display=swap');
+.login-bg{
+  width: 100%;
+  height: 100vh;
+  padding-top: 50px;
+}
 .form-container{
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 50px;
+
 }
 .wrapper{
   width: 50%;
@@ -12,7 +16,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: white;
+  background-color: transparent;
   border-radius: 10px;
   box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
 }
@@ -25,13 +29,14 @@
 
 .line {
   flex-grow: 1;
-  height: 1px;
-  background-color: #ccc;
+  height: 2px;
+  background-color: rgb(107, 106, 106);
 }
 
 .or {
   margin: 0 10px;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 500;
   color: #666;
 }
 .form-group{
@@ -51,11 +56,11 @@
   align-items: center;
 }
 .login-title{
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 600;
   color: #3d3d3d;
   text-align: center;
-  font-family: "Workbench", sans-serif;
+  font-family:monospace;
   line-height: 40px;
   padding-left: 10px;
 }
@@ -125,4 +130,12 @@ label {
 }
 .error{
   color: #FF0000;
+}
+@media (max-width: 728px) {
+
+.wrapper{
+  box-shadow: none;
+}
+
+
 }

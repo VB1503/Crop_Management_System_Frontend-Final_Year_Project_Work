@@ -1,3 +1,8 @@
+
+*{
+    box-sizing: border-box;
+}
+
 .Register-form{
     width: 100%;
     display: flex;
