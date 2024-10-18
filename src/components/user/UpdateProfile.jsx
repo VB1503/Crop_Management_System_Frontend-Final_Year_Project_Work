@@ -108,7 +108,7 @@ const ProfileUpdate = () => {
     }
     
   }
-  console.log(is_verified)
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserData((prevUserData) => ({
@@ -126,23 +126,36 @@ const ProfileUpdate = () => {
     handleProfileSubmit();
   }
   const uploadImage = () => {
+    if (!image) {
+      toast.error('No image selected');
+      return;
+    }
+  
     const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "jvvslzla");
     data.append("cloud_name", "dybwn1q6h");
+  
+    // Log the form data content to debug file upload
+    console.log("Form Data:", data);
+  
     fetch("https://api.cloudinary.com/v1_1/dybwn1q6h/image/upload", {
       method: "post",
       body: data
     })
-      .then(resp => resp.json())
-      .then(data => {
-        setProfile(data.url);
-        setUploaded(true)
-        localStorage.setItem('profile_pic', data.url);
-
-      })
-      .catch(err => toast.error('Error in Uploading Image'));
+    .then(resp => resp.json())
+    .then(data => {
+      console.log("Response from Cloudinary:", data);
+      setProfile(data.url);
+      setUploaded(true);
+      localStorage.setItem('profile_pic', data.url);
+    })
+    .catch(err => {
+      console.error("Error in uploading image:", err);
+      toast.error('Error in Uploading Image');
+    });
   };
+  
   const handleUpdateSubmit = async () => {
     try {
       const userId = localStorage.getItem('userid');
@@ -166,7 +179,49 @@ const ProfileUpdate = () => {
       toast.error('An error occurred while updating profile');
     }
   };
+  const resizeImage = (file, maxWidth, maxHeight) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+  
+      img.onload = () => {
+        let width = img.width;
+        let height = img.height;
+  
+        // Calculate new dimensions
+        if (width > height) {
+          if (width > maxWidth) {
+            height *= maxWidth / width;
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width *= maxHeight / height;
+            height = maxHeight;
+          }
+        }
+  
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+  
+        canvas.toBlob((blob) => {
+          resolve(blob);
+        }, file.type);
+      };
+    });
+  };
 
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+  
+    // Resize image if needed
+    const resizedImage = await resizeImage(file, 800, 800);
+    setImage(resizedImage);
+  };
 
   const handleProfileSubmit = async () => {
     try {
@@ -298,7 +353,7 @@ const ProfileUpdate = () => {
                           <label htmlFor="file-upload-input" className="custom-file-upload">
                             <FaEdit />
                           </label>
-                          <input type="file" id='file-upload-input' onChange={(e) => setImage(e.target.files[0])}></input>
+                          <input type="file" id='file-upload-input' onChange={handleImageUpload} />
                           <img src={image ? URL.createObjectURL(image) : profile} alt="Uploaded" className="uploaded-image" />
                       </div>
                       {image &&
