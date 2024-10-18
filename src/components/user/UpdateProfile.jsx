@@ -366,11 +366,7 @@ const ProfileUpdate = () => {
                       }
                     </div>
                 </div>
-                {is_verified === 'false' && 
-                <div className='prof-right'>
-                    <VerifyOtp />
-                </div>
-}
+                
             </div>
             <div className='prof-info-cont'>
             <h1 className='cont-head'>Change Password & <span style={{color:"red"}}>Delete</span> Account</h1>
@@ -393,6 +389,13 @@ const ProfileUpdate = () => {
           </div>
         </div>
       )}
+      {is_verified === 'false' && (
+                  <div className='modal-background'>
+                    <div className='overlay-otp'>
+                      <VerifyOtp />
+                    </div>
+                  </div>
+        )}
     </div>
   );
 };

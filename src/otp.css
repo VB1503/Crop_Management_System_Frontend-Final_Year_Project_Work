@@ -1,82 +1,206 @@
+/* Base styles for OTP container */
 .otp-cont {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 40px;
-  }
-  .otp-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.otp-card {
   padding: 20px;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
-  }
-  .otp-welcome {
-    margin-bottom: 20px;
-  }
-.otp-user{
-    font-style: italic;
-    font-size: 20px;
-    font-weight: 600;
+  box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07);
+  max-width: 600px;
+  width: 600px;
+  box-sizing: border-box;
 }
-  .otp-form {
-    margin-bottom: 20px;
-    width: 100%;
+
+/* Welcome and user styles */
+.otp-welcome {
+  margin-bottom: 20px;
+}
+
+.otp-user {
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* OTP Form styles */
+.otp-form {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.resend {
+  color: green;
+  cursor: pointer;
+}
+
+/* Labels for form fields */
+.otp-form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Input fields */
+.otpfill {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+}
+
+/* Submit button */
+.submitButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submitButton:hover {
+  background-color: #0056b3;
+}
+
+/* Forget icon container */
+.forgetIcon {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.fa-exclamation {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+/* Invalid OTP styling */
+.invalid-otp {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #FF0000;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+}
+
+/* Pass link inside otp card */
+.otp-card .pass-link {
+  padding-top: 10px;
+  float: right;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .otp-card {
+    max-width: 400px;
+    width: 400px;
   }
-  .resend{
-    color:green;
-    
+
+  .otp-user {
+    font-size: 18px;
   }
-  .otp-form label {
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .otpfill{
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    font-size: 16px;
-  }
-  
+
+  .otpfill,
+  .invalid-otp,
   .submitButton {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .submitButton {
+    font-size: 14px;
+  }
+
+  .forgetIcon {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .otp-card {
+    max-width: 340px;
+    width: 340px;
+  }
+
+  .otp-user {
     font-size: 16px;
   }
-  
-  .submitButton:hover {
-    background-color: #0056b3;
+
+  .otpfill,
+  .invalid-otp,
+  .submitButton {
+    font-size: 12px;
+    padding: 6px;
   }
-  .forgetIcon{
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 30px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+
+  .submitButton {
+    font-size: 12px;
   }
-  .fa-exclamation{
-    width: 40px;
-    height: 40px;
-    margin-bottom: 10px;
+
+  .forgetIcon {
+    max-width: 200px;
   }
-  .invalid-otp{
-    width: 100%;
+
+  .fa-exclamation {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+  /* Base Styles for the modal pop-up */
+.overlay-otp {
+  position: fixed; /* Fix the position of the modal */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the modal on the screen */
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1000; /* Ensure it's on top of other content */
+  width: 100%;
+  max-width: 400px; /* Max width for mobile responsiveness */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Modal background overlay */
+.modal-background {
+  position: fixed; /* Cover the entire screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
+  z-index: 999; /* Place it behind the modal but above all other content */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .overlay-otp {
+    max-width: 90%; /* Adjust modal width for mobile */
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay-otp {
+    max-width: 95%; /* Further adjust modal width for smaller screens */
     padding: 10px;
-    border: 1px solid #FF0000;
-    border-radius: 5px;
-    outline: none;
-    font-size: 16px;
   }
-  .otp-card .pass-link{
-    padding-top: 10px;
-    float: right;
-  }
+}
